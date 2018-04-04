@@ -19,11 +19,11 @@ export class AppComponent {
 
   // languages
   private languages = [
-    'c',
-    'cpp',
-    'javascript',
-    'python',
-    'java',
+    {name: 'C', value: 'c'},
+    {name: 'C++', value: 'cpp'},
+    {name: 'Javascript', value: 'javascript'},
+    {name: 'Python', value: 'python'},
+    {name: 'Java', value: 'java'}
   ]
   private selectedLanguage = 'javascript';
 
@@ -37,6 +37,10 @@ export class AppComponent {
   private output = '';
 
   constructor(private http: HttpClient) {}
+
+  selectLanguage(language: string) {
+    this.selectedLanguage = language;
+  }
 
   run() {
     console.log('code:' + this.code.toString());
