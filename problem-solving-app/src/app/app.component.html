@@ -6,10 +6,15 @@
 <div class="row">
   <div class="col" style="margin-left: 5px">
     <label>Input</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="input"></textarea>
   </div>
   <div class="col">
       <label>Output</label>
-      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" [value]="output">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <button type="button" class="btn btn-primary" (click)="run()">Run</button>
   </div>
 </div>
