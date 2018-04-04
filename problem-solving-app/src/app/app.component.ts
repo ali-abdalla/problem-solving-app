@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { js } from './source-code/source-codes';
 
 @Component({
   selector: 'app-root',
@@ -7,48 +8,39 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  editorOptions = {theme: 'vs-dark', language: 'javascript'};
-  code: string= `process.stdin.resume();
-  process.stdin.setEncoding('ascii');
   
-  var input_stdin = "";
-  var input_stdin_array = "";
-  var input_currentline = 0;
-  
-  process.stdin.on('data', function (data) {
-      input_stdin += data;
-  });
-  
-  process.stdin.on('end', function () {
-      input_stdin_array = input_stdin.split("\\n");
-      main();    
-  });
-  
-  function readLine() {
-      return input_stdin_array[input_currentline++];
-  }
-  
-  /////////////// ignore above this line ////////////////////
-  
-  function main() {
-      var N = parseInt(readLine());
-      if (N % 2) {
-        console.log("Weird");
-      } else {
-        console.log("Not Weird");
-      }
-  }
-  
-  `;
+  // themes
+  private selectedTheme = 'vs-dark';
+  private themes = [
+    'vs',
+    'vs-dark',
+    'hc-black'
+  ];
 
-  input = "";
-  output = "";
+  // languages
+  private languages = [
+    'c',
+    'cpp',
+    'javascript',
+    'python',
+    'java',
+  ]
+  private selectedLanguage = 'javascript';
 
-  constructor(private http: HttpClient) { }
+  private code: string = js;
+  private editorOptions = {
+    theme: this.selectedTheme,
+    language: this.selectedLanguage
+  };
+
+  private input = '';
+  private output = '';
+
+  constructor(private http: HttpClient) {}
 
   run() {
-    console.log('code: ' + this.code.toString());
-    console.log('input: ' + this.input.toString());
+    console.log('code:' + this.code.toString());
+    console.log('input:' + this.input.toString());
     this.http.post('http://localhost:4000/run', {
       code: this.code,
       input: this.input
@@ -56,6 +48,5 @@ export class AppComponent {
       this.output = res['result'];
       console.log(this.output);
     });
-    
   }
 }
