@@ -1,0 +1,28 @@
+{
+  "name": "problem-solving-app",
+  "version": "1.0.0",
+  "description": "problem solving application that compile and run multiple languages",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ali-abdalla/problem-solving-app.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "ali abdallah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ali-abdalla/problem-solving-app/issues"
+  },
+  "homepage": "https://github.com/ali-abdalla/problem-solving-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compile-run": "^1.2.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
+  }
+}
