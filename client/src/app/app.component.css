@@ -1,0 +1,12 @@
+#my-code-editor {
+  width: calc(100% + 15px);
+  height: calc(100vh - 180px);
+}
+
+.row {
+  margin-right: 0px;
+}
+
+.input {
+  margin-left: 10px;
+}

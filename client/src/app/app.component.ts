@@ -40,6 +40,7 @@ export class AppComponent {
 
   selectLanguage(language: string) {
     this.selectedLanguage = language;
+    console.log(this.selectedLanguage);
   }
 
   run() {

@@ -4,32 +4,27 @@
     <img src="/assets/topcoder.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> Problem Solving App
   </a>
   <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li *ngFor="let language of languages" class="nav-item" [ngClass]="{'active': language.value === selectedLanguage}">
-          <a class="nav-link" (click)="selectLanguage(language.value)">{{language.name}}</a>
-        </li>
-      </ul>
-    </div>
-  
+    <ul class="navbar-nav">
+      <li *ngFor="let language of languages" class="nav-item" [ngClass]="{'active': language.value === selectedLanguage}">
+        <a class="nav-link" (click)="selectLanguage(language.value)">{{language.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-primary my-2 my-sm-0" (click)="run()">Run</button>
 </nav>
 <div class="row">
   <div class="col">
-    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+    <ngx-monaco-editor id="my-code-editor" class="my-code-editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
   </div>
 </div>
 <div class="row">
-  <div class="col" style="margin-left: 5px">
-    <label>Input</label>
+  <div class="col input">
+    <h6>Input</h6>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="input"></textarea>
   </div>
   <div class="col">
-      <label>Output</label>
-      <br />
-      <p [innerHtml]="output"></p>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <button type="button" class="btn btn-primary" (click)="run()">Run</button>
+    <h6>Output</h6>
+    <br />
+    <p [innerHtml]="output"></p>
   </div>
 </div>

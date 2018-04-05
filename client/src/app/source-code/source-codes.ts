@@ -1,5 +1,4 @@
-export const js = `
-process.stdin.resume();
+export const js = `process.stdin.resume();
 process.stdin.setEncoding('ascii');
 
 var input_stdin = "";
