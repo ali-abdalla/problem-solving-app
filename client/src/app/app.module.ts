@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     MonacoEditorModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
