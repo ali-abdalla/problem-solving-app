@@ -10,11 +10,17 @@
       </li>
     </ul>
   </div>
-  <button class="btn btn-primary my-2 my-sm-0" (click)="run()">Run</button>
+  <div class="my-2 my-sm-0">
+    <a (click)="selectTheme('vs')"><img src="/assets/vscode-light.png" width="30" height="30"/></a>
+    &nbsp;
+    <a (click)="selectTheme('vs-dark')"><img src="/assets/vscode-dark.png" width="30" height="30"/></a>
+    &nbsp;
+    <button class="btn btn-primary " (click)="run()">Run</button>
+  </div>
 </nav>
 <div class="row">
   <div class="col">
-    <ngx-monaco-editor id="my-code-editor" class="my-code-editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+    <ngx-monaco-editor id="code-editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
   </div>
 </div>
 <div class="row">

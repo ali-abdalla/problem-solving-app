@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { js } from './source-code/source-codes';
+import { js, cpp } from './source-code/source-codes';
 
 @Component({
   selector: 'app-root',
@@ -19,11 +19,11 @@ export class AppComponent {
 
   // languages
   private languages = [
-    {name: 'C', value: 'c'},
-    {name: 'C++', value: 'cpp'},
-    {name: 'Javascript', value: 'javascript'},
-    {name: 'Python', value: 'python'},
-    {name: 'Java', value: 'java'}
+    {name: 'Javascript', value: 'javascript', template: js},
+    {name: 'C', value: 'c', template: ''},
+    {name: 'C++', value: 'cpp', template: cpp},
+    {name: 'Python', value: 'python', template: ''},
+    {name: 'Java', value: 'java', template: ''}
   ]
   private selectedLanguage = 'javascript';
 
@@ -39,8 +39,22 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   selectLanguage(language: string) {
+    let previousLanguage = this.languages.find(element => element.value == this.selectedLanguage);
+    previousLanguage.template = this.code;    
     this.selectedLanguage = language;
-    console.log(this.selectedLanguage);
+    this.editorOptions = {
+      theme: this.selectedTheme,
+      language: this.selectedLanguage
+    };  
+    this.code = this.languages.find(element => element.value == language).template;
+  }
+
+  selectTheme(theme: string) {
+    this.selectedTheme = theme;
+    this.editorOptions = {
+      theme: this.selectedTheme,
+      language: this.selectedLanguage
+    };  
   }
 
   run() {
